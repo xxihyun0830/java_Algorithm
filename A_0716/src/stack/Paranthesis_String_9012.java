@@ -2,30 +2,29 @@ package stack;
 import java.util.*;
 public class Paranthesis_String_9012 {
 	
-	public void VPSCheck(String str) {
+	//아늬 맞게 나오는데 왜 틀리냐고 그르냐고!!!!
+	public String VPSCheck(String str) {
 		ArrayList<String> list = new ArrayList<String>();
 		String [] arr = str.split("");
 		
 		for(int i=0; i<arr.length; i++) {
 			String tokens = arr[i];
-			if(list.size() == 0) {
+			if(tokens.contentEquals("(")) {
 				list.add(tokens);
 			}else {
-				String peak = list.get(list.size()-1);
-				if(tokens == "(") {
-					list.add(tokens);
+				if(list.size() != 0) {
+					list.remove(list.size()-1);
 				}else {
-					list.remove(index)
+					list.add(tokens);
 				}
+				
 			}
-			
-			
 		}
 		System.out.println("--------------");
 		if(list.size() == 0) {
-			System.out.println("YES");
+			return "YES";
 		}else {
-			System.out.println("NO");
+			return "NO";
 		}
 		
 	}
@@ -33,15 +32,23 @@ public class Paranthesis_String_9012 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		Paranthesis_String_9012 a = new Paranthesis_String_9012();
+		ArrayList <String> res = new ArrayList<String>();
 		
 		System.out.print("how many times : ");
 		int times = sc.nextInt();
 		
+		
 		while (times != 0) {
 			System.out.print("enter str : ");
 			String str = sc.next();
-			a.VPSCheck(str);
+			String ans = a.VPSCheck(str);
+			res.add(ans);
+			
 			times --;
+		}
+		System.out.println(">>>>>>>>>>>>>>");
+		for(int i = 0; i< res.size();i++) {
+			System.out.println(res.get(i));
 		}
 		sc.close();
 		
