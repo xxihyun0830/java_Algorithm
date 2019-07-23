@@ -6,11 +6,10 @@ public class seven_Professor_2{
 		LinkedList<Double> list = new LinkedList<Double>();
 		
 		int times = sc.nextInt();
-		if(times < 8) {
-			System.out.println("입력하는 점수는 8개 이상이어야 합니다. ");
-			times = sc.nextInt();
-		}
-			
+		/*
+		 * if(times < 8) { System.out.println("입력하는 점수는 8개 이상이어야 합니다. "); times =
+		 * sc.nextInt(); }
+		 */
 		while(times != 0) {
 			double score = sc.nextDouble();
 			list.add(score);
