@@ -1,7 +1,7 @@
 package BFS;
 import java.util.*;
 
-class tmt_index{
+/*class tmt_index{
 	int x;
 	int y;
 	
@@ -10,8 +10,8 @@ class tmt_index{
 		this.y = j;
 	}
 }
-
-public class tomato {
+*/
+public class tomao {
 	
 	public static LinkedList<tmt_index> out_index(LinkedList<tmt_index> box, int i, int j,int row, int column){
 		if(i>-1 && i < column) {
