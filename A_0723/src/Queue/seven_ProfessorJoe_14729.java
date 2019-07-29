@@ -2,6 +2,7 @@ package Queue;
 import java.util.*;
 import java.io.*;
 
+//메모리 초과가 뜨는데 이유를 모르겠다...
 public class seven_ProfessorJoe_14729 {
 
 	public static void main(String[] args) {
