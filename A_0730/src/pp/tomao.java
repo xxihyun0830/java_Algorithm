@@ -1,7 +1,8 @@
-package BFS;
+package pp;
 import java.util.*;
 
-/*class tmt_index{
+//토마토 좌표를 담기 위해서 class 이용 
+class tmt_index{
 	int x;
 	int y;
 	
@@ -10,51 +11,57 @@ import java.util.*;
 		this.y = j;
 	}
 }
-*/
+
 public class tomao {
 	
+	//메소드 : out_index
+	// 토마토상자의 범위를 벗어나는 좌표는 box에 들어가지 않게 하는 메소드
+	// out_index
 	public static LinkedList<tmt_index> out_index(LinkedList<tmt_index> box, int i, int j,int row, int column){
 		if(i>-1 && i < column) {
 			if(j>-1 && j <row) {
 				box.add(new tmt_index(i,j));
 			}
 		}
-		
 		return box;
 	}
 	
+	// 메소드 : r_tmt
+	// 토마토 상자 구현 
 	public static int[][] r_tmt(int[][] arr, int row, int column){
-
-		ArrayList<Integer> box_size = new ArrayList<>();
-		LinkedList<tmt_index> q = new LinkedList<>();
-		LinkedList<tmt_index> box = new LinkedList<>();
+		
+		LinkedList<tmt_index> q = new LinkedList<>(); // 익은 토마토 넣기 
+		LinkedList<tmt_index> box = new LinkedList<>(); // q와 인접한 토마토 넣기
 		ArrayList<LinkedList<tmt_index>> tmt = new ArrayList<>(); //이거 없으면 무한 출력
 		int count_day = 0;
 		
-		//익은 토마토 찾기 
+		
+		// 익은 토마토 찾기 
+		// 좌표를 하나의 인스턴스로 받아서 LinkedList에 추가. 즉, LinkedList의 인덱스 하나의 값은 좌표 한 덩어리임.
 		for(int i = 0; i<column;i++) {
 			for(int j = 0; j<row;j++) {
 				if (arr[i][j] == 1) {
-					q.add(new tmt_index(i,j)); //class를 이용해서 넣기
+					q.add(new tmt_index(i,j));
 					
-					//익은 토마토와 인접한 것들의 좌표 담기
+					//익은 토마토의 인접한 것들의 좌표를 box에 담기
 					//주어진 범위(column*row) 를 벗어난 경우는 입력하지 않음
 					box = out_index(box,i,j-1,row,column);
 					box = out_index(box,i-1,j,row,column);
 					box = out_index(box,i,j+1,row,column);
 					box = out_index(box,i+1,j,row,column);
-					System.out.println("box size : " + box.size());
-					box_size.add(box.size());
-					//현재 토마토와 인접한 것들 좌표들을 한 덩어리로 담기 
-					  //이거 한 덩어리로 안 담긴다. 그냥 연속되어 들어감 
+										
 					tmt.add(box);
 				}
 			}
+			
 		}
+		System.out.println("box size(익은 토마토와 인접한 것들의 총 갯수) : " + box.size());
+		
+		
 		//익은 토마토 출력
 		for(int i = 0; i<q.size();i++) {
 			tmt_index t = q.get(i);
-			System.out.println( "ripen-tmt : "+"("+t.x+","+t.y+")" + " ");
+			System.out.println( "ripe-tmt : "+"("+t.x+","+t.y+")" + " ");
 		}
 		System.out.println("2---------------------------");
 		//-----------------------------------------------
@@ -73,6 +80,7 @@ public class tomao {
 		
 		System.out.println("***********************8");
 		//dequeue 하고 count_day ++ 하고 값 바꿔주고 또 다시 enqueue
+		
 		for(int i = 0; i<tmt.size();i++) {
 			LinkedList<tmt_index> m = tmt.get(i); // 덩어리 하나 
 			for(int j = 0; j < m.size();j++) {
@@ -94,7 +102,7 @@ public class tomao {
 				
 			}
 			count_day ++;
-			tmt.remove(i);
+			tmt.remove(box);
 		}
 		
 		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
@@ -110,6 +118,10 @@ public class tomao {
 		return arr;
 	}
 	
+	
+	//--------------------------------------------------------------
+	// 여기가 Main!!!
+	//main 메소드
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		//열 + 행 순서로 입력받음 
@@ -118,6 +130,7 @@ public class tomao {
 		int column = sc.nextInt(); //행
 		int[][] arr = new int[column][row];
 		
+		//전체 토마토 상태 정하기
 		for(int i = 0; i< column ;i++) {
 			for(int j = 0; j<row;j++) {
 				int a = sc.nextInt();
@@ -126,24 +139,30 @@ public class tomao {
 		}
 
 		//토마토 전체 출력 
+		System.out.println("1.토마토 전체 출력  ------");
+		for(int i = 0; i< column;i++) {
+			for(int j = 0; j<row;j++) {
+				System.out.print(arr[i][j] + "  "); //backjoon에서는 띄어쓰기 안 함
+			}
+			System.out.println("");
+	    }
+		System.out.println();
+		
+		
+		// 토마토 문제 풀기~
+		arr = r_tmt(arr,row, column);
+		//arr = r_tmt(arr,row, column);
+		//arr = r_tmt(arr,row, column);
+		
+		System.out.println("///////////////////////////////");
+		
+		//토마토 숙성 최종 결과물
 		for(int i = 0; i< column;i++) {
 			for(int j = 0; j<row;j++) {
 				System.out.print(arr[i][j] + "  ");
 			}
 			System.out.println("");
 	    }
-		
-		System.out.println("1---------------------------");
-		
-		arr = r_tmt(arr,row, column);
-		arr = r_tmt(arr,row, column);
-		
-		for(int i = 0; i< column ;i++) {
-			for(int j = 0; j<row;j++) {
-				int a = sc.nextInt();
-				arr[i][j] = a;
-			}
-		}
 		sc.close();
 	}
 
