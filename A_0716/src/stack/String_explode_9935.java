@@ -7,8 +7,7 @@ public class String_explode_9935 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer stz = new StringTokenizer(br.readLine()); //띄어쓰기으로 구분
         
-       
-        String str = stz.nextToken(); //문자열
+        String str = stz.nextToken(); // 문자열
         String exp = stz.nextToken(); // 폭발 문자열
         
         String[] s1 = str.split("");

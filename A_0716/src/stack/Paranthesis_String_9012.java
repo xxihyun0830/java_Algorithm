@@ -3,19 +3,19 @@ import java.util.*;
 public class Paranthesis_String_9012 {
 	
 	//아늬 맞게 나오는데 왜 틀리냐고 그르냐고!!!!
-	public String VPSCheck(String str) {
-		ArrayList<String> list = new ArrayList<String>();
+	public static String VPSCheck(String str) {
+		LinkedList<String> list = new LinkedList<String>();
 		String [] arr = str.split("");
 		
 		for(int i=0; i<arr.length; i++) {
 			String tokens = arr[i];
-			if(tokens.contentEquals("(")) {
-				list.add(tokens);
-			}else {
-				if(list.size() != 0) {
-					list.remove(list.size()-1);
-				}else {
-					list.add(tokens);
+			if(tokens.equals("(")) { //열린 괄호일 때
+				list.push(tokens);
+			}else { //닫힌 괄호일 떄
+				if(list.size() != 0) {//list에  "("있다면
+					list.pollLast(); //
+				}else { //list에 아무것도 없다면
+					list.push(tokens);
 				}
 				
 			}
@@ -31,7 +31,7 @@ public class Paranthesis_String_9012 {
 	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		Paranthesis_String_9012 a = new Paranthesis_String_9012();
+		
 		ArrayList <String> res = new ArrayList<String>();
 		
 		System.out.print("how many times : ");
@@ -41,7 +41,7 @@ public class Paranthesis_String_9012 {
 		while (times != 0) {
 			System.out.print("enter str : ");
 			String str = sc.next();
-			String ans = a.VPSCheck(str);
+			String ans = VPSCheck(str);
 			res.add(ans);
 			
 			times --;

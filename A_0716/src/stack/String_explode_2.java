@@ -8,9 +8,12 @@ public class String_explode_2 {
 		String str = sc.nextLine();
 		String exp = sc.nextLine();
 		
+		String[] a1 = new String[1000000];
+		String[] a2 = new String[36];
+		
 		//받은 문자열을 잘라서 배열에 넣고 또다시 리스트로 저장
-		String [] a1 = str.split("");
-		String [] a2 = exp.split("");
+		a1 = str.split("");
+		a2 = exp.split("");
 		
 		ArrayList<String> s1 = new ArrayList<>();
 		ArrayList<String> s2 = new ArrayList<>();
