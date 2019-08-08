@@ -13,6 +13,7 @@ class tmt{
 }
 
 public class p_tmt {
+	
 	// 1. 익은 토마토 찾기
 	//    단, 이미 담았던 것은 다시 담을 수 없음
 	//     -> 익은 토마토를 담은 리스트를 기준으로, 반복을 얼마나 할 것인지 판단 가능 
@@ -31,8 +32,8 @@ public class p_tmt {
 						//새롭게 찾은 익은 토마토를 찾을 때
 						if(arr[i][j] == 1) {
 							// 꺼낸 좌표 중에서 동일한 게 없을 떄만 추가
-							if(x != i && y != j) {
-								ripe_tmt.add(new tmt(i,j));
+							if(x == i && y == j) {
+								
 							}
 						}
 					}
@@ -41,13 +42,15 @@ public class p_tmt {
 			}//익은 토마토 리스트 끝
 		}
 		
-		// 초기 익은 토마토일 경우 
-		for (int i = 0; i< column;i++) {
-			for(int j = 0; j< row;j++) {
-				if (arr[i][j] == 1) {
-					ripe_tmt.add(new tmt(i,j));
-				}
-			}
+		// 초기상태의 익은 토마토일 경우 
+		else{
+			for (int i = 0; i< column;i++) {
+				for(int j = 0; j< row;j++) {
+					if (arr[i][j] == 1) {
+						ripe_tmt.add(new tmt(i,j));
+				    }
+			    }
+		    }
 		}
 		return ripe_tmt;
 	} 
@@ -89,10 +92,9 @@ public class p_tmt {
 		return arr;
 	}
 	
-	//################################################33
-	//################################################33
-	//################################################33
-	//################################################33
+	
+	//################################################
+	//################################################
 	//Main--------------------------------------------------------------------------------------------
 	public static void main(String[] args) {
 		LinkedList<tmt> ripe_tmt = new LinkedList<>(); //익은 토마토
@@ -121,12 +123,10 @@ public class p_tmt {
 			System.out.println("");
 	    }
 		
-		//익은 토마토 찾기 + 인접한 토마토 찾기
+		//인접한 토마토를 찾기 위해서 익은 토마토를 찾음
 		for (int i = 0; i< column;i++) {
 			for(int j = 0; j< row;j++) {
-				if (arr[i][j] == 1) {
-					//ripe_tmt = ripe_tmt_box(ripe_tmt, arr, column, row) 
-					
+				if (arr[i][j] == 1) {					
 					ripe_tmt.add(new tmt(i,j));// 익은 토마토 찾고
 					
 					adjoin_tmt = adjoin_indexCheck(adjoin_tmt,i,j-1,row,column); // 좌
@@ -142,6 +142,7 @@ public class p_tmt {
 		
 		//익은 토마토 출력
 		System.out.println("2. 익은 토마토 출력 ---------");
+		ripe_tmt = ripe_tmt_box(ripe_tmt, arr, column, row);
 		System.out.println(ripe_tmt.size()+"개 ");
 		for(int i = 0; i < ripe_tmt.size();i++) {
 			System.out.print("(" + ripe_tmt.get(i).x + "," + ripe_tmt.get(i).y + ")" + " ");
@@ -159,6 +160,7 @@ public class p_tmt {
 		
 		arr = aging_box(adjoin_tmt, arr, column, row);
 		
+		System.out.println();
 		System.out.println("4.숙성과정을 거친 토마토 전체 출력  ------");
 		for(int i = 0; i< column;i++) {
 			for(int j = 0; j<row;j++) {
@@ -166,6 +168,8 @@ public class p_tmt {
 			}
 			System.out.println("");
 	    }
+		
+		
 		
 		
 		
