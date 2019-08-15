@@ -31,13 +31,12 @@ public class top_2493 {
 					System.out.println("2.curr-m :" + m);
 					System.out.println("2.curr-top :" +top);
 					
-					
-					if (list.indexOf(top) > list.indexOf(m)) {
+					if(list.indexOf(m)==0 ) {
+						System.out.println(">>>>>>>"+"0");
+						
+					}else if (list.indexOf(top) > list.indexOf(m)) {
 						System.out.println("2.list.indexOf(top) : " + list.indexOf(top));
 						System.out.println("2.list.indexOf(m): " + list.indexOf(m));
-						if(list.indexOf(top) == 1 && list.indexOf(m)==0 ) {
-							System.out.println(">>>>>>>"+"0");
-						}
 						System.out.println(">>>>"+"0");
 						
 					} else if (list.indexOf(top) < list.indexOf(m)) {
@@ -45,15 +44,12 @@ public class top_2493 {
 						System.out.println("3.list.indexOf(top) : " + list.indexOf(top));
 						System.out.println("3.list.indexOf(m): " + list.indexOf(m));
 						System.out.println(">>>>"+(list.indexOf(top) + 1));
-						top = m;
-						stack.push(top);
-						if(list.indexOf(top) == 1 && list.indexOf(m)==0 ) {
-							System.out.println(">>>>>>>"+"0");
-							top = m;
-							stack.push(top);
-						}
+						
 
 					}
+					top = m;
+					stack.push(top);
+					
 				}
 
 				if (top > m) {
