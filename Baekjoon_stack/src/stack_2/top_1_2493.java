@@ -1,8 +1,8 @@
-package stack;
+package stack_2;
 
 import java.util.*;
 
-public class top_2493 {
+public class top_1_2493 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();

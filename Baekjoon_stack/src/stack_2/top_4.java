@@ -1,4 +1,4 @@
-package stack;
+package stack_2;
 
 import java.util.*;
 public class top_4 {
