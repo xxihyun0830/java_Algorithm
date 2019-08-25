@@ -1,4 +1,4 @@
-package stack_2;
+package correct;
 import java.util.*;
 import java.io.*;
 public class top_9_correct {

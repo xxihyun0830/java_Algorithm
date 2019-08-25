@@ -1,4 +1,4 @@
-package stack_2;
+package stack_top_2493;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

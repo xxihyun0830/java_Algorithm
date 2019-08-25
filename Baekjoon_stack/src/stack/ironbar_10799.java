@@ -38,17 +38,6 @@ package stack;
  * 
  * 
  * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
  * */
 public class ironbar_10799 {
 	

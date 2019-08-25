@@ -1,6 +1,6 @@
 package stack;
 import java.util.*;
-public class Paranthesis_String_9012 {
+public class parenthesis_string_1_9012 {
 	
 	//아늬 맞게 나오는데 왜 틀리냐고 그르냐고!!!!
 	public static String VPSCheck(String str) {

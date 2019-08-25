@@ -1,5 +1,7 @@
-package stack_2;
+package stack_top_2493;
+
 import java.util.*;
+import java.io.*;
 
 /*class top {
 	int index;
@@ -11,18 +13,20 @@ import java.util.*;
 	}
 }*/
 
-public class top_6 {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		ArrayList <Integer> list = new ArrayList<>();
+public class top_7 {
+	public static void main(String[] args) throws Exception {
+		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+		
 		Stack<top> stack = new Stack<>();
 		StringBuilder sb = new StringBuilder();
 		
-		int n = sc.nextInt();
+		int n = Integer.parseInt(bf.readLine());
 		
+		ArrayList <Integer> list = new ArrayList<>();
+		StringTokenizer st = new StringTokenizer(bf.readLine());
+		// 한칸띄어쓰기 포함하여 한줄로 받을 때는 stringTokenizer 이용
 		for(int i = 0; i<n;i++) {
-			int m = sc.nextInt();
-			list.add(m);
+			list.add(Integer.parseInt(st.nextToken()));
 		}
 		
 		for(int i = 0; i<n;i++) {
@@ -69,14 +73,15 @@ public class top_6 {
 			}
 		}
 		
-		System.out.println("---------------------------------");
+		System.out.println("---______________________----");
+		System.out.println("size : "+sb.length());
 		for(int i=0; i<n;i++) {
-			System.out.print(sb.charAt(i) + " ");
+			System.out.print(sb.charAt(i)+" ");
 		}
-		
-		sc.close();
 		
 
 	}
 
 }
+
+
